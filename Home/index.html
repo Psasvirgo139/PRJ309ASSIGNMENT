@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>scroll | Đọc truyện online</title>
+
+    <!-- Core CSS (minified bundle) -->
+    <link rel="stylesheet" href="/Home/css/style.css" />
+
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <meta
+      name="description"
+      content="Scroll – Kho truyện lớn, cập nhật nhanh, đọc mượt trên mọi thiết bị."
+    />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <!-- Skip‑link for Accessibility  -->
+    <a href="#main" class="skip-link">Bỏ qua và tới nội dung chính</a>
+
+    <header class="header" id="top">
+      <div class="logo" aria-label="Trang chủ Scroll">
+        📚 <span>scroll</span>
+      </div>
+
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a class="nav-link active" href="#home" data-page="home">Trang chủ</a>
+        <a class="nav-link" href="#genres" data-page="genre">Thể loại</a>
+        <a class="nav-link" href="#latest" data-page="new">Truyện mới</a>
+        <a class="nav-link" href="#recommend" data-page="recommend">Đề xuất</a>
+        <a class="premium-badge" href="#premium" data-page="premium">Premium</a>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-container" role="search" aria-label="Tìm kiếm truyện">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Tìm truyện, tác giả…"
+            autocomplete="off"
+            aria-haspopup="listbox"
+            aria-controls="suggestList"
+          />
+          <ul class="search-suggest" id="suggestList" role="listbox"></ul>
+        </form>
+
+        <button id="toggleTheme" aria-label="Chuyển dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+
+        <div class="account-dropdown" id="accountDropdown">
+          <button class="account-btn" id="accountBtn" aria-haspopup="true" aria-expanded="false">
+            <span id="accountIcon">👤</span>
+            <span id="accountName">Tài khoản</span>
+            ▼
+          </button>
+          <ul class="account-menu" id="accountMenu" role="menu">
+            <li><button id="loginBtn" role="menuitem">Đăng nhập</button></li>
+            <li><button id="registerBtn" role="menuitem">Đăng ký</button></li>
+            <li><button id="logoutBtn" style="display: none" role="menuitem">Đăng xuất</button></li>
+          </ul>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Mở menu di động">
+          &#9776;
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO ---------------------------------- -->
+      <section class="hero" id="home">
+        <h1>
+          Khám phá kho truyện <span class="highlight">khổng lồ</span> &
+          <span class="highlight">chất lượng</span>
+        </h1>
+        <p>Hơn 20 thể loại, hàng nghìn chương mới mỗi ngày.</p>
+        <a href="#storiesGrid" class="cta-btn">Bắt đầu đọc ngay</a>
+      </section>
+
+      <!-- STORIES FEATURED ---------------------- -->
+      <section class="stories-list" aria-labelledby="featured-heading">
+        <h2 id="featured-heading">Truyện nổi bật</h2>
+        <div class="stories-grid" id="storiesGrid" aria-live="polite"></div>
+        <div class="skeleton-loader" id="skeletonLoader"></div>
+      </section>
+
+      <!-- STORIES UPDATE ----------------------- -->
+      <section class="stories-update" id="latest" aria-labelledby="update-heading">
+        <div class="update-header">
+          <h2 id="update-heading">Truyện mới cập nhật</h2>
+          <button class="filter-btn" id="filterUpdate" aria-label="Lọc truyện mới"></button>
+        </div>
+        <div class="stories-update-grid" id="updateGrid" aria-live="polite"></div>
+        <div class="skeleton-loader" id="updateSkeleton"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER (hiện đại – glass) -------------- -->
+    <footer class="footer-flex-modern" id="footer"></footer>
+
+    <!-- DYNAMIC MODALS ------------------------- -->
+    <dialog class="modal" id="modalAuth" aria-modal="true">
+      <form method="dialog" class="modal-content" id="authForm" novalidate>
+        <button class="close" id="closeModal" aria-label="Đóng">×</button>
+        <h3 id="modalTitle">Đăng nhập</h3>
+        <input type="text" id="authUser" placeholder="Tên đăng nhập" required />
+        <input type="password" id="authPass" placeholder="Mật khẩu" required />
+        <button type="submit" id="submitAuth">Đăng nhập</button>
+        <p class="switch-auth">
+          Chưa có tài khoản?
+          <a href="#" id="switchToRegister">Đăng ký</a>
+        </p>
+      </form>
+    </dialog>
+
+    <!-- Core JS (bundled & deferred) -->
+    <script src="/Home/js/app.js" defer></script>
+
+    <!-- Quick enhancement: đóng menu mobile khi chọn link -->
+    <script>
+      document.querySelectorAll('.main-nav a').forEach((l) =>
+        l.addEventListener('click', () => {
+          document.getElementById('mainNav').classList.remove('show-mobile');
+        })
+      );
+    </script>
+  </body>
+</html>
