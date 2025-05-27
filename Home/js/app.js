@@ -132,3 +132,99 @@ window.addEventListener('resize',()=>$('#mainNav').classList.remove('show-mobile
 // ----------------------------
 renderFeatured();
 renderUpdates();
+
+// lấy phần tử
+const hamburgerBtn = $('#hamburgerBtn');
+const mainNav      = $('#mainNav');
+let backdropEl     = null;
+
+// khi click vào hamburger / close
+hamburgerBtn.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('show-mobile');
+
+  // đổi icon và label
+  hamburgerBtn.innerHTML = isOpen ? '×' : '&#9776;';
+  hamburgerBtn.setAttribute(
+    'aria-label',
+    isOpen ? 'Đóng menu di động' : 'Mở menu di động'
+  );
+
+  // tạo hoặc xóa backdrop
+  if (isOpen) showBackdrop();
+  else         hideBackdrop();
+});
+
+// khi resize lớn hơn mobile, luôn reset
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    mainNav.classList.remove('show-mobile');
+    hamburgerBtn.innerHTML = '&#9776;';
+    hamburgerBtn.setAttribute('aria-label', 'Mở menu di động');
+    hideBackdrop();
+  }
+});
+
+function showBackdrop() {
+  backdropEl = document.createElement('div');
+  backdropEl.className = 'nav-backdrop';
+
+  // click vào backdrop cũng đóng menu
+  backdropEl.addEventListener('click', () => {
+    mainNav.classList.remove('show-mobile');
+    hamburgerBtn.innerHTML = '&#9776;';
+    hamburgerBtn.setAttribute('aria-label', 'Mở menu di động');
+    hideBackdrop();
+  });
+
+  document.body.appendChild(backdropEl);
+}
+
+function hideBackdrop() {
+  if (backdropEl) {
+    backdropEl.remove();
+    backdropEl = null;
+  }
+}
+// 1. Lấy tất cả section có id, lấy tất cả nav-link
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.main-nav a');
+
+// 2. Tạo observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // khi 1 section vào viewport, active link tương ứng
+      navLinks.forEach(link => {
+        link.classList.toggle(
+          'active',
+          link.dataset.page === entry.target.id
+        );
+      });
+    }
+  });
+}, {
+  rootMargin: '-50% 0px -50% 0px', // kích hoạt khi section ở giữa màn hình
+  threshold: 0
+});
+
+// 3. Observe từng section
+sections.forEach(sec => observer.observe(sec));
+
+// 4. Khi click link, set active ngay lập tức
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+// trong app.js, sau khi init mobile nav
+const genreItem = document.querySelector('.main-nav .nav-item');
+const genreLink = genreItem.querySelector('.nav-link');
+
+genreLink.addEventListener('click', e => {
+  if (window.innerWidth <= 768) {
+    e.preventDefault();
+    genreItem.classList.toggle('open');
+  }
+});

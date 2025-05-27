@@ -377,3 +377,156 @@ dialog.modal {
   align-items:center;
   gap:4px;
 }
+/* style.css */
+
+/* backdrop che mờ khi menu mobile mở */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 90;
+}
+
+/* đảm bảo menu nằm trên backdrop */
+.main-nav {
+  z-index: 100;
+}
+
+/* === Dropdown thể loại (Mega Menu) === */
+.nav-item {
+  position: relative;
+}
+
+/* Ẩn mặc định + transition mượt */
+.nav-item .mega-menu {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s ease;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  padding: 24px 32px;
+  min-width: 600px;
+  width: max-content;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 32px; /* hàng x cột */
+}
+
+/* Khi hover hoặc focus */
+.nav-item:hover .mega-menu,
+.nav-item:focus-within .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mỗi cột chứa danh sách thể loại */
+.mega-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Style cho link thể loại */
+.mega-menu a {
+  display: block;
+  color: var(--primary);
+  font-size: 0.95rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.mega-menu a:hover {
+  background: var(--highlight);
+  color: #65341c;
+}
+
+/* Responsive fallback (2 cột ở mobile) */
+@media (max-width: 768px) {
+  .mega-menu {
+    position: static;
+    transform: none;
+    opacity: 1 !important;
+    visibility: visible !important;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px;
+    box-shadow: none;
+    background: none;
+  }
+}
+.footer-flex-scroll {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 32px 4vw;
+  border-top: 1px solid #eee;
+  font-size: 0.95rem;
+  background: #fafafa;
+}
+
+.footer-left {
+  flex: 1 1 50%;
+  max-width: 620px;
+  color: #333;
+}
+.footer-left p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+.footer-left a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.footer-note {
+  font-style: italic;
+  color: #555;
+}
+
+.footer-right {
+  flex: 1 1 45%;
+  max-width: 480px;
+  text-align: right;
+}
+.footer-right .tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+.footer-meta {
+  color: #444;
+  font-weight: 500;
+}
+.footer-meta a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.footer-meta a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive fallback */
+@media (max-width: 768px) {
+  .footer-flex-scroll {
+    flex-direction: column;
+    gap: 24px;
+    text-align: left;
+  }
+  .footer-right {
+    text-align: left;
+  }
+  .footer-right .tags-wrap {
+    justify-content: flex-start;
+  }
+}
