@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>scroll | Đọc truyện online</title>
+
+  <!-- Core CSS (minified bundle) -->
+  <link rel="stylesheet" href="/Profile/style.css" />
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta name="description" content="Scroll – Kho truyện lớn, cập nhật nhanh, đọc mượt trên mọi thiết bị." />
+  <link rel="icon" href="/favicon.ico" />
+</head>
+
+<body>
+  <!-- Skip‑link for Accessibility  -->
+  <a href="#main" class="skip-link">Bỏ qua và tới nội dung chính</a>
+
+  <header class="header" id="top">
+    <div class="logo" aria-label="Trang chủ Scroll">
+      📚 <span>scroll</span>
+    </div>
+
+    <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+      <a class="nav-link active" href="#home" data-page="home">Trang chủ</a>
+      <div class="nav-item genres-dropdown">
+        <a class="nav-link" href="#genres" data-page="genre" aria-haspopup="true" aria-expanded="false">
+          Thể loại ▾
+        </a>
+        <div class="mega-menu" aria-label="Danh sách thể loại">
+          <div class="mega-column">
+            <a href="#ngontinh">Ngôn Tình</a>
+            <a href="#dothi">Đô Thị</a>
+            <a href="#khoahuyen">Khoa Huyễn</a>
+            <a href="#dinang">Dị Năng</a>
+            <a href="#xuyenkhong">Xuyên Không</a>
+            <a href="#thamhiem">Thám Hiểm</a>
+            <a href="#nguoc">Ngược</a>
+            <a href="#nucuong">Nữ Cường</a>
+            <a href="#haihuoc">Hài Hước</a>
+            <a href="#matthe">Mạt Thế</a>
+            <a href="#nuphu">Nữ Phụ</a>
+            <a href="#dammy">Đam Mỹ</a>
+          </div>
+          <div class="mega-column">
+            <a href="#tienhiep">Tiên Hiệp</a>
+            <a href="#quantruong">Quan Trường</a>
+            <a href="#huyenhuyen">Huyền Huyễn</a>
+            <a href="#quansu">Quân Sự</a>
+            <a href="#trongsinh">Trọng Sinh</a>
+            <a href="#linhdi">Linh Dị</a>
+            <a href="#sung">Sủng</a>
+            <a href="#giadau">Gia Đấu</a>
+            <a href="#dienvan">Điền Văn</a>
+            <a href="#lightnovel">Light Novel</a>
+            <a href="#bachhop">Bách Hợp</a>
+            <a href="#review">Review</a>
+          </div>
+          <div class="mega-column">
+            <a href="#kiemhiep">Kiếm Hiệp</a>
+            <a href="#vongdu">Võng Du</a>
+            <a href="#dgioi">Dị Giới</a>
+            <a href="#lichsu">Lịch Sử</a>
+            <a href="#trinhtham">Trinh Thám</a>
+            <a href="#sac">Sắc</a>
+            <a href="#cungdau">Cung Đấu</a>
+            <a href="#dongphuong">Đông Phương</a>
+            <a href="#codai">Cổ Đại</a>
+            <a href="#tieuthuyet">Tiểu Thuyết</a>
+            <a href="#vanhocviet">Văn học Việt</a>
+            <a href="#gioithieu">Giới thiệu truyện</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="#latest" data-page="new">Truyện mới</a>
+      <a class="nav-link" href="#recommend" data-page="recommend">Đề xuất</a>
+      <a class="premium-badge" href="#premium" data-page="premium">Premium</a>
+    </nav>
+
+    <div class="header-actions">
+      <form class="search-container" role="search" aria-label="Tìm kiếm truyện">
+        <input id="searchInput" type="search" placeholder="Tìm truyện, tác giả…" autocomplete="off"
+          aria-haspopup="listbox" aria-controls="suggestList" />
+        <ul class="search-suggest" id="suggestList" role="listbox"></ul>
+      </form>
+
+      <button id="toggleTheme" aria-label="Chuyển dark/light mode">
+        <span id="themeIcon">🌙</span>
+      </button>
+
+      <div class="account-dropdown" id="accountDropdown">
+        <button class="account-btn" id="accountBtn" aria-haspopup="true" aria-expanded="false">
+          <span id="accountIcon">👤</span>
+          <span id="accountName">Tài khoản</span>
+          ▼
+        </button>
+        <ul class="account-menu" id="accountMenu" role="menu">
+          <li><button id="loginBtn" role="menuitem">Đăng nhập</button></li>
+          <li><button id="registerBtn" role="menuitem">Đăng ký</button></li>
+          <li><button id="logoutBtn" style="display: none" role="menuitem">Đăng xuất</button></li>
+        </ul>
+      </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Mở menu di động">
+        &#9776;
+      </button>
+    </div>
+  </header>
+
+ <main class="profile-page">
+  <section class="profile-container">
+    <h1 class="profile-title">Thiết lập cá nhân</h1>
+
+    <div class="profile-grid profile-3col">
+      <!-- Cột 1: Thông tin người dùng -->
+      <div class="profile-info">
+        <h2>Thông tin người dùng</h2>
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" value="scroll_user" readonly />
+        </div>
+        <div class="form-group">
+          <label for="email">Địa chỉ email</label>
+          <input type="email" id="email" value="user@email.com" readonly />
+        </div>
+        <div class="form-group">
+          <label for="displayName">Tên hiển thị</label>
+          <input type="text" id="displayName" placeholder="Nhập tên bạn muốn hiển thị" />
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Mật khẩu mới</label>
+          <input type="password" id="newPassword" placeholder="Nhập mật khẩu mới" />
+        </div>
+        <button class="cta-btn">Lưu thay đổi</button>
+      </div>
+
+      <!-- Cột 2: Truyện đang đọc -->
+      <div class="profile-reading">
+        <h2>Truyện đang đọc</h2>
+        <ul class="reading-list">
+          <li><a href="#">🌟 Ma Đạo Tổ Sư – Chương 89</a></li>
+          <li><a href="#">📘 One Piece – Chương 1092</a></li>
+          <li><a href="#">🔮 Hệ Thống Tu Tiên – Chương 21</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Truyện yêu thích -->
+      <div class="profile-fav">
+        <h2>Truyện yêu thích</h2>
+        <ul class="reading-list">
+          <li><a href="#">❤️ Ma Đạo Tổ Sư</a></li>
+          <li><a href="#">🔥 Hệ Thống Tu Tiên</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+  <!-- FOOTER (hiện đại – glass) -------------- -->
+<div class="footer-flex-scroll">
+  <div class="footer-left">
+    <p><strong>SCROLL</strong> – Nền tảng <a href="#home">đọc truyện online</a> mượt mà, cập nhật nhanh hàng ngàn truyện hot: ngôn tình, tiên hiệp, kiếm hiệp, đam mỹ, light novel, truyện dịch chất lượng cao. Tối ưu cho mọi thiết bị: từ điện thoại đến máy tính bảng.</p>
+
+    <p class="footer-note">
+      <em>Toàn bộ truyện được sưu tầm từ cộng đồng, blog, diễn đàn truyện lớn. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền, vui lòng liên hệ với chúng tôi qua email: <strong>scrollteam@gmail.com</strong>.</em>
+    </p>
+  </div>
+
+  <div class="footer-right">
+    <div class="tags-wrap">
+      <button class="tagv2 tag-hot">Truyện Hot</button>
+      <button class="tagv2">Ngôn Tình Ngắn</button>
+      <button class="tagv2">Ngôn Tình Hay</button>
+      <button class="tagv2">Ngôn Tình 18+</button>
+      <button class="tagv2">Ngôn Tình Hoàn</button>
+      <button class="tagv2">Ngôn Tình Ngược</button>
+      <button class="tagv2">Ngôn Tình Sủng</button>
+      <button class="tagv2">Ngôn Tình Hài</button>
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+  <!-- DYNAMIC MODALS ------------------------- -->
+  <dialog class="modal" id="modalAuth" aria-modal="true">
+    <form method="dialog" class="modal-content" id="authForm" novalidate>
+      <button class="close" id="closeModal" aria-label="Đóng">×</button>
+      <h3 id="modalTitle">Đăng nhập</h3>
+      <input type="text" id="authUser" placeholder="Tên đăng nhập" required />
+      <input type="password" id="authPass" placeholder="Mật khẩu" required />
+      <button type="submit" id="submitAuth">Đăng nhập</button>
+      <p class="switch-auth">
+        Chưa có tài khoản?
+        <a href="#" id="switchToRegister">Đăng ký</a>
+      </p>
+    </form>
+  </dialog>
+
+  <!-- Core JS (bundled & deferred) -->
+  <script src="/Profile/app.js" defer></script>
+
+  <!-- Quick enhancement: đóng menu mobile khi chọn link -->
+  <script>
+    document.querySelectorAll('.main-nav a').forEach((l) =>
+      l.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('show-mobile');
+      })
+    );
+  </script>
+</body>
+
+</html>
